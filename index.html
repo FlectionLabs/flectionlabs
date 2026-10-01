@@ -63,7 +63,7 @@
 
     /* text sits TOP — above globe */
     .hero-top {
-      position:relative; z-index:2; padding:8rem 2rem 0;
+      position:relative; z-index:2; padding:8rem 2rem 3rem;
       text-align:center; pointer-events:none;
       opacity:0; animation:fadeUp 1s ease forwards .5s;
     }
@@ -515,6 +515,8 @@ window.addEventListener('scroll', () => {
   geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
   const mat = new THREE.PointsMaterial({ size:.027, vertexColors:true, transparent:true, opacity:.97, sizeAttenuation:true });
   const sphere = new THREE.Points(geo, mat);
+  // Move globe DOWN away from headline
+  sphere.position.y = -0.35;
   scene.add(sphere);
 
   let mx = 0, my = 0;
