@@ -18,7 +18,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --ink:     #0E1C13;
       --canvas:  #FAF8F4;
@@ -27,10 +26,8 @@
       --gold-w:  #E0B87A;
       --dark:    #080f0a;
     }
-
     html { scroll-behavior: smooth; }
     body { background: var(--canvas); color: var(--ink); font-family: 'Syne', sans-serif; overflow-x: hidden; }
-
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -53,14 +50,12 @@
     .pulse { width:6px; height:6px; background:var(--sage); border-radius:50%; animation:blink 2.5s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.2;transform:scale(.4)} }
     @media(max-width:580px){ nav{padding:1rem 1.2rem;} .nav-link{display:none;} }
-
     /* HERO */
     #hero {
       position:relative; min-height:100vh; background:var(--dark);
       display:flex; flex-direction:column; overflow:hidden;
     }
     #three-canvas { position:absolute; inset:0; z-index:0; }
-
     /* text sits TOP — above globe */
     .hero-top {
       position:relative; z-index:2; padding:8rem 2rem 3rem;
@@ -78,10 +73,8 @@
       color:#F2EAD8;
     }
     .hero-h1 span { display:block; font-weight:300; font-style:italic; color:var(--gold-w); }
-
     /* globe fills middle — no text overlay */
     .hero-globe { flex:1; position:relative; z-index:1; min-height:340px; }
-
     /* tagline sits BOTTOM — below globe */
     .hero-bottom {
       position:relative; z-index:2; padding:0 2rem 3.5rem;
@@ -103,17 +96,15 @@
     }
     @keyframes scrollP { 0%,100%{opacity:.3} 50%{opacity:1} }
     .scroll-label { font-size:.52rem; letter-spacing:.22em; color:rgba(240,232,216,.3); }
-
     /* WAVE */
     .wave {
-      position:relative; height:90px; background:var(--dark); overflow:hidden;
+      position:relative; height:62px; background:var(--dark); overflow:hidden;
     }
     .wave::after {
       content:''; position:absolute; bottom:0; left:-6%; right:-6%;
-      height:110px; background:var(--canvas);
-      border-radius:50% 50% 0 0 / 80px 80px 0 0;
+      height:88px; background:var(--canvas);
+      border-radius:50% 50% 0 0 / 64px 64px 0 0;
     }
-
     /* SECTION LABELS */
     .section-label {
       font-size:.6rem; font-weight:800; letter-spacing:.3em;
@@ -121,7 +112,6 @@
       padding:3.5rem 2rem 1.4rem;
       max-width:1060px; margin:0 auto; display:block;
     }
-
     /* HEADING BLOCK */
     .section-heading {
       font-family:'Cormorant Garamond',serif;
@@ -131,7 +121,7 @@
       max-width:1060px; margin:0 auto;
     }
     .section-heading em { font-style:italic; font-weight:300; color:var(--sage); }
-
+    #products .section-heading { padding-top:1.15rem; }
     /* PRODUCTS */
     #products { background:var(--canvas); padding-bottom:1rem; }
     .grid {
@@ -139,7 +129,6 @@
       display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;
     }
     @media(max-width:700px){ .grid{ grid-template-columns:1fr; } }
-
     /* LIVE CARDS */
     .card-live {
       border-radius:26px; padding:2.4rem 2.2rem 2rem;
@@ -148,7 +137,6 @@
       transition:transform .4s cubic-bezier(.22,.68,0,1.2), box-shadow .4s ease;
     }
     .card-live:hover { transform:translateY(-7px) scale(1.011); }
-
     .card-memflect {
       background:linear-gradient(148deg,#160B30 0%,#251448 48%,#180C32 100%);
       box-shadow:0 2px 0 rgba(255,255,255,.055) inset, 0 14px 44px rgba(50,15,110,.38), 0 3px 10px rgba(0,0,0,.28);
@@ -163,7 +151,6 @@
     .card-medflect:hover {
       box-shadow:0 2px 0 rgba(255,255,255,.06) inset, 0 28px 72px rgba(28,130,58,.5), 0 0 0 1.5px rgba(80,210,110,.2), 0 3px 10px rgba(0,0,0,.32);
     }
-
     .card-orb {
       position:absolute; border-radius:50%;
       filter:blur(72px); opacity:0; pointer-events:none;
@@ -172,14 +159,12 @@
     .card-live:hover .card-orb { opacity:1; }
     .card-memflect .card-orb { width:300px;height:300px; background:radial-gradient(circle,rgba(170,90,255,.52),transparent 68%); top:-100px;right:-80px; }
     .card-medflect .card-orb { width:300px;height:300px; background:radial-gradient(circle,rgba(48,200,90,.46),transparent 68%); bottom:-100px;left:-80px; }
-
     .card-dots {
       position:absolute; inset:0; border-radius:26px;
       background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);
       background-size:26px 26px; background-position:13px 13px;
     }
     .card-inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; }
-
     .card-badge {
       display:inline-flex; align-items:center; gap:.42rem;
       font-size:.56rem; font-weight:700; letter-spacing:.18em;
@@ -191,7 +176,6 @@
     .card-memflect .badge-dot  { background:#D5B8FF; }
     .card-medflect .card-badge { background:rgba(80,205,110,.11); border:1px solid rgba(80,205,110,.28); color:#85E8A5; }
     .card-medflect .badge-dot  { background:#85E8A5; }
-
     .card-name {
       font-family:'Cormorant Garamond',serif;
       font-size:3rem; font-weight:700; letter-spacing:-.01em;
@@ -204,7 +188,6 @@
     }
     .card-memflect .card-hl { color:rgba(215,190,255,.7); }
     .card-medflect .card-hl { color:rgba(162,232,188,.7); }
-
     .card-foot {
       display:flex; align-items:center; justify-content:space-between;
       padding-top:1.3rem; margin-top:1.3rem;
@@ -224,14 +207,12 @@
     .card-live:hover .cta-c { transform:translateX(4px); }
     .card-memflect .cta-c { background:rgba(185,135,255,.18); }
     .card-medflect .cta-c { background:rgba(80,205,110,.18); }
-
     /* COMING SOON */
     .coming-row {
       grid-column:1/-1;
       display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;
     }
     @media(max-width:700px){ .coming-row{ grid-template-columns:1fr; } }
-
     .card-soon {
       border-radius:26px; padding:2.2rem 2.2rem 2rem;
       display:flex; flex-direction:column;
@@ -249,7 +230,6 @@
     }
     .card-memgong .card-orb { width:210px;height:210px; background:radial-gradient(circle,rgba(224,150,36,.42),transparent 68%); top:-55px;right:-55px; }
     .card-memgong:hover .card-orb { opacity:1; }
-
     .card-flectale {
       background:linear-gradient(145deg,#0C1520 0%,#152132 50%,#0A1018 100%);
       box-shadow:0 2px 0 rgba(130,175,255,.06) inset, 0 10px 36px rgba(8,28,58,.42), 0 3px 8px rgba(0,0,0,.26);
@@ -261,14 +241,12 @@
     }
     .card-flectale .card-orb { width:210px;height:210px; background:radial-gradient(circle,rgba(78,128,255,.42),transparent 68%); bottom:-55px;left:-55px; }
     .card-flectale:hover .card-orb { opacity:1; }
-
     .card-dots-sm {
       position:absolute; inset:0; border-radius:26px;
       background-image:radial-gradient(circle,rgba(255,255,255,.038) 1px,transparent 1px);
       background-size:22px 22px; background-position:11px 11px;
     }
     .card-soon-inner { position:relative; z-index:2; display:flex; flex-direction:column; height:100%; }
-
     .soon-badge {
       font-size:.56rem; font-weight:700; letter-spacing:.15em;
       padding:.26rem .82rem; border-radius:100px;
@@ -276,7 +254,6 @@
     }
     .card-memgong .soon-badge { background:rgba(200,146,74,.12); border:1px solid rgba(200,146,74,.24); color:var(--gold-w); }
     .card-flectale .soon-badge { background:rgba(100,150,225,.1); border:1px solid rgba(100,150,225,.22); color:rgba(158,200,255,.8); }
-
     .soon-name {
       font-family:'Cormorant Garamond',serif;
       font-size:2.4rem; font-weight:700; line-height:1;
@@ -284,36 +261,87 @@
     }
     .card-memgong .soon-name { color:rgba(238,196,115,.58); }
     .card-flectale .soon-name { color:rgba(155,198,255,.48); }
-
     .soon-desc {
       font-family:'Cormorant Garamond',serif; font-style:italic;
       font-size:.98rem; line-height:1.68; font-weight:300; flex:1;
     }
     .card-memgong .soon-desc { color:rgba(218,175,96,.42); }
     .card-flectale .soon-desc { color:rgba(135,178,242,.38); }
-
-    /* OUR STACK */
+    /* BUILT ON */
     #stack {
       background:var(--canvas);
-      padding:0 2rem 4.5rem;
+      padding:1.25rem 2rem 5rem;
     }
     .stack-inner {
-      max-width:1060px; margin:0 auto;
-      padding-top:1rem;
-      border-top:1px solid rgba(14,28,19,.1);
+      max-width:960px; margin:0 auto;
+      padding-top:2.1rem;
+      border-top:1px solid rgba(14,28,19,.09);
+      text-align:center;
     }
+    .stack-title {
+      display:inline-flex; align-items:center; gap:.85rem;
+      font-size:.6rem; font-weight:800; letter-spacing:.3em;
+      text-transform:uppercase; color:rgba(14,28,19,.42);
+      margin-bottom:1.45rem;
+    }
+    .stack-title::before,
+    .stack-title::after {
+      content:''; width:30px; height:1px;
+      background:linear-gradient(90deg,transparent,rgba(200,146,74,.6));
+    }
+    .stack-title::after { transform:scaleX(-1); }
     .stack-chips {
-      display:flex; flex-wrap:wrap; gap:.6rem; padding-top:1.2rem;
+      display:flex; flex-wrap:wrap; justify-content:center;
+      gap:.72rem;
+      max-width:820px; margin:0 auto;
     }
     .stack-chip {
-      font-size:.66rem; font-weight:600; letter-spacing:.05em;
-      color:var(--ink); background:rgba(14,28,19,.04);
-      border:1px solid rgba(14,28,19,.1);
-      padding:.36rem .95rem; border-radius:999px;
-      transition:background .2s, border-color .2s;
+      position:relative; overflow:hidden;
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:38px;
+      font-size:.67rem; font-weight:650; letter-spacing:.055em;
+      color:rgba(14,28,19,.78);
+      padding:.56rem 1.05rem; border-radius:999px;
+      border:1px solid rgba(14,28,19,.10);
+      background:
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,.96) 0, rgba(255,255,255,0) 38%),
+        radial-gradient(circle, rgba(14,28,19,.05) .75px, transparent .85px),
+        linear-gradient(145deg, #FFFEFB 0%, #F5F2E9 100%);
+      background-size:auto, 10px 10px, auto;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.9) inset,
+        0 -1px 0 rgba(14,28,19,.025) inset,
+        0 5px 16px rgba(14,28,19,.055);
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, color .22s ease;
     }
-    .stack-chip:hover { background:rgba(14,28,19,.08); border-color:rgba(14,28,19,.18); }
-
+    .stack-chip:nth-child(3n+1) {
+      background:
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,.95) 0, rgba(255,255,255,0) 38%),
+        radial-gradient(circle, rgba(14,28,19,.045) .75px, transparent .85px),
+        linear-gradient(145deg, #FFFEFB 0%, rgba(139,184,154,.13) 100%);
+      background-size:auto, 10px 10px, auto;
+    }
+    .stack-chip:nth-child(3n+2) {
+      background:
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,.95) 0, rgba(255,255,255,0) 38%),
+        radial-gradient(circle, rgba(14,28,19,.045) .75px, transparent .85px),
+        linear-gradient(145deg, #FFFEFB 0%, rgba(224,184,122,.12) 100%);
+      background-size:auto, 10px 10px, auto;
+    }
+    .stack-chip:hover {
+      transform:translateY(-2px);
+      color:var(--ink);
+      border-color:rgba(200,146,74,.32);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.95) inset,
+        0 9px 24px rgba(14,28,19,.09),
+        0 0 0 3px rgba(200,146,74,.045);
+    }
+    @media(max-width:580px){
+      #stack{ padding-left:1.2rem; padding-right:1.2rem; }
+      .stack-chips{ gap:.55rem; }
+      .stack-chip{ font-size:.63rem; padding:.5rem .85rem; }
+    }
     /* FOOTER */
     footer {
       background:var(--ink);
@@ -326,13 +354,11 @@
     .foot-link { font-size:.62rem; font-weight:600; letter-spacing:.1em; color:rgba(200,146,74,.5); text-decoration:none; transition:color .2s; }
     .foot-link:hover { color:var(--gold); }
     .foot-copy { font-size:.6rem; color:rgba(240,232,216,.18); letter-spacing:.04em; }
-
     @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
     @media(prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important} }
   </style>
 </head>
 <body>
-
 <nav id="nav" class="dark">
   <a href="/" class="nav-logo">Flection<em>Labs</em></a>
   <div class="nav-r">
@@ -342,11 +368,9 @@
     <div class="pulse"></div>
   </div>
 </nav>
-
 <!-- HERO -->
 <section id="hero">
   <canvas id="three-canvas"></canvas>
-
   <!-- TOP TEXT — above globe, always readable -->
   <div class="hero-top">
     <span class="hero-eyebrow">Flection Labs &nbsp;·&nbsp; Singapore &nbsp;·&nbsp; Est. 2025</span>
@@ -355,10 +379,8 @@
       <span>life changing tools.</span>
     </h1>
   </div>
-
   <!-- GLOBE SPACE -->
   <div class="hero-globe"></div>
-
   <!-- BOTTOM TEXT — below globe, always readable -->
   <div class="hero-bottom">
     <p class="hero-sub">No subscriptions. You keep what you create forever.<br>Our apps are the opposite of Big Brother.</p>
@@ -368,19 +390,14 @@
     </div>
   </div>
 </section>
-
 <!-- WAVE -->
 <div class="wave"></div>
-
-<!-- OUR PROJECTS -->
+<!-- PRODUCTS -->
 <section id="products">
-  <span class="section-label">Our Projects</span>
   <div class="section-heading">
     Voice-based AI tools<br>made for <em>all walks of life.</em>
   </div>
-
   <div class="grid">
-
     <a href="https://memflect.com" target="_blank" class="card-live card-memflect">
       <div class="card-dots"></div>
       <div class="card-orb"></div>
@@ -396,7 +413,6 @@
         </div>
       </div>
     </a>
-
     <a href="https://medflect.com" target="_blank" class="card-live card-medflect">
       <div class="card-dots"></div>
       <div class="card-orb"></div>
@@ -412,7 +428,6 @@
         </div>
       </div>
     </a>
-
     <div class="coming-row">
       <div class="card-soon card-memgong">
         <div class="card-dots-sm"></div>
@@ -433,14 +448,12 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
-
-<!-- OUR STACK -->
+<!-- BUILT ON -->
 <section id="stack">
   <div class="stack-inner">
-    <span class="section-label" style="padding:1.4rem 0 0; display:block;">Our Stack</span>
+    <span class="stack-title">Built on</span>
     <div class="stack-chips">
       <span class="stack-chip">ElevenLabs API</span>
       <span class="stack-chip">Anthropic Claude API</span>
@@ -456,7 +469,6 @@
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer>
   <p class="foot-logo">Flection<em>Labs</em></p>
@@ -470,7 +482,6 @@
   </div>
   <p class="foot-copy">© 2026 Flection Labs · Singapore 🇸🇬</p>
 </footer>
-
 <script>
 // Nav switches dark/light on scroll past hero
 const nav = document.getElementById('nav');
@@ -478,7 +489,6 @@ const hero = document.getElementById('hero');
 window.addEventListener('scroll', () => {
   nav.className = hero.getBoundingClientRect().bottom < 80 ? 'light' : 'dark';
 });
-
 // THREE.JS PARTICLE SPHERE
 (function(){
   const canvas = document.getElementById('three-canvas');
@@ -486,16 +496,13 @@ window.addEventListener('scroll', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x000000, 0);
-
   const scene  = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
   camera.position.z = 3.2;
-
   const COUNT = 4000;
   const pos  = new Float32Array(COUNT * 3);
   const base = new Float32Array(COUNT * 3);
   const col  = new Float32Array(COUNT * 3);
-
   for(let i = 0; i < COUNT; i++){
     const theta = Math.acos(2 * Math.random() - 1);
     const phi   = 2 * Math.PI * Math.random();
@@ -509,7 +516,6 @@ window.addEventListener('scroll', () => {
     else if(t > .35){ col[i*3]=.20;  col[i*3+1]=.94; col[i*3+2]=.46; } // vivid green
     else{             col[i*3]=.96;  col[i*3+1]=.92; col[i*3+2]=.86; } // bright cream
   }
-
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
@@ -518,16 +524,13 @@ window.addEventListener('scroll', () => {
   // Move globe DOWN away from headline
   sphere.position.y = -0.75;
   scene.add(sphere);
-
   let mx = 0, my = 0;
   window.addEventListener('mousemove', e => {
     mx = (e.clientX / window.innerWidth  - .5) * 2;
     my = (e.clientY / window.innerHeight - .5) * 2;
   });
-
   const off = new Float32Array(COUNT);
   for(let i=0;i<COUNT;i++) off[i] = Math.random() * Math.PI * 2;
-
   let f = 0;
   function animate(){
     requestAnimationFrame(animate);
@@ -550,7 +553,6 @@ window.addEventListener('scroll', () => {
     renderer.render(scene, camera);
   }
   animate();
-
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
