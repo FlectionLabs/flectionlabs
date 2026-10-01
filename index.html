@@ -516,7 +516,7 @@ window.addEventListener('scroll', () => {
   const mat = new THREE.PointsMaterial({ size:.027, vertexColors:true, transparent:true, opacity:.97, sizeAttenuation:true });
   const sphere = new THREE.Points(geo, mat);
   // Move globe DOWN away from headline
-  sphere.position.y = -0.35;
+  sphere.position.y = -0.75;
   scene.add(sphere);
 
   let mx = 0, my = 0;
